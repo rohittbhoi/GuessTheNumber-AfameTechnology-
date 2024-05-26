@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Number Guessing Game</h1>
+        <form action="game.php" method="post">
+            <label for="min-range">Minimum number:</label>
+            <input type="number" id="min-range" name="min_range" required>
+            <label for="max-range">Maximum number:</label>
+            <input type="number" id="max-range" name="max_range" required>
+            <label for="attempts-limit">Attempts limit:</label>
+            <input type="number" id="attempts-limit" name="attempts_limit" required>
+            <button type="submit" name="start">Start Game</button>
+        </form>
+        
+        <?php include 'game.php'; ?>
+        
+        <form action="game.php" method="post">
+            <?php if (isset($_SESSION['randomNumber']) && isset($_SESSION['attemptsLimit'])) : ?>
+            <label for="guess">Enter your guess:</label>
+            <input type="number" id="guess" name="guess" required>
+            <button type="submit">Submit Guess</button>
+            <?php endif; ?>
+        </form>
+    </div>
+</body>
+</html>
